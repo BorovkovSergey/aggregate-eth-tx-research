@@ -21,15 +21,6 @@ contract FundRedirectFrom {
         require(token.balanceOf(from) == 0, "not 0");
     }
 
-    function approve(
-        ERC20 _token,
-        address approve_addr,
-        address owner
-    ) public {
-        SafeERC20.safeApprove(_token, approve_addr, 1);
-        require(_token.allowance(owner, approve_addr) == 1, "allowance");
-    }
-
     function setupSol(address eth, string memory solana) public {
         require(msg.sender == eth, "This is not signer address");
         ethToSol[eth] = solana;
